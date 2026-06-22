@@ -88,3 +88,7 @@ fabric.properties
 
 
 .qodo
+node_modules
+.env
+.env.dev
+.env.prod
