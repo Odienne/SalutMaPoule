@@ -1,0 +1,41 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "db:migrate": "dotenv -e .env.dev -- dbmate up",
+    "db:rollback": "dotenv -e .env.dev -- dbmate rollback",
+    "db:generate": "dotenv -e .env.dev -- zapatos"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "@types/node": "^26.0.0",
+    "fastify": "^4.29.1",
+    "fastify-jwt": "^4.1.3",
+    "fastify-swagger": "^5.1.1",
+    "fastify-zod": "^1.4.0",
+    "pg": "^8.22.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3",
+    "zapatos": "^6.6.1",
+    "zod": "^4.4.3",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/pg": "^8.20.0",
+    "dbmate": "^2.33.0",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.6.0",
+    "jiti": "^2.7.0",
+    "prettier": "^3.8.4",
+    "tsx": "^4.22.4",
+    "typescript-eslint": "^8.61.1"
+  }
+}
