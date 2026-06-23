@@ -112,6 +112,12 @@ declare module 'zapatos/schema' {
       * - Nullable, no default
       */
       last_name: string | null;
+      /**
+      * **users.password_hash**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_hash: string;
     }
     export interface JSONSelectable {
       /**
@@ -144,6 +150,12 @@ declare module 'zapatos/schema' {
       * - Nullable, no default
       */
       last_name: string | null;
+      /**
+      * **users.password_hash**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_hash: string;
     }
     export interface Whereable {
       /**
@@ -176,6 +188,12 @@ declare module 'zapatos/schema' {
       * - Nullable, no default
       */
       last_name?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.password_hash**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_hash?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
       /**
@@ -208,6 +226,12 @@ declare module 'zapatos/schema' {
       * - Nullable, no default
       */
       last_name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.password_hash**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_hash?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
     }
     export interface Updatable {
       /**
@@ -240,6 +264,12 @@ declare module 'zapatos/schema' {
       * - Nullable, no default
       */
       last_name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.password_hash**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_hash?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
     }
     export type UniqueIndex = 'users_email_key' | 'users_pkey';
     export type Column = keyof Selectable;
