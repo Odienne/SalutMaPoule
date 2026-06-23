@@ -118,6 +118,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_hash: string;
+      /**
+      * **users.password_salt**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_salt: string;
     }
     export interface JSONSelectable {
       /**
@@ -156,6 +162,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_hash: string;
+      /**
+      * **users.password_salt**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_salt: string;
     }
     export interface Whereable {
       /**
@@ -194,6 +206,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_hash?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.password_salt**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_salt?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
       /**
@@ -232,6 +250,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_hash?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.password_salt**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_salt?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
     }
     export interface Updatable {
       /**
@@ -270,6 +294,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_hash?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.password_salt**
+      * - `text` in database
+      * - `NOT NULL`, default: `''::text`
+      */
+      password_salt?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
     }
     export type UniqueIndex = 'users_email_key' | 'users_pkey';
     export type Column = keyof Selectable;

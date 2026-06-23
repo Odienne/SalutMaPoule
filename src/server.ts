@@ -6,11 +6,24 @@ import {
     validatorCompiler, type ZodTypeProvider,
 } from 'fastify-type-provider-zod';
 
-import Fastify from "fastify";
+import Fastify, {type FastifyReply, type FastifyRequest} from "fastify";
 import userRoutes from "./modules/users/user.route.js";
+import jwt from "fastify-jwt";
 
+export const server = Fastify().withTypeProvider<ZodTypeProvider>();
 
-const server = Fastify().withTypeProvider<ZodTypeProvider>();
+server.register(jwt, {
+    secret: "enfinencdi"
+})
+
+server.decorate("authenticate", async (request: FastifyRequest, reply: FastifyReply) => {
+        try {
+            await request.jwtVerify(request.headers.authorization);
+        } catch (error) {
+            reply.status(401).send({error: 'Unauthorized'});
+        }
+    }
+);
 
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);

@@ -15,3 +15,7 @@ export async function createUser(input: CreateUserInput) {
         {...rest, password: hash, salt}
     );
 }
+
+export async function findByEmail(email: string) {
+    return userRepository.findByEmail(email);
+}

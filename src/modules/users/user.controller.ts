@@ -1,6 +1,9 @@
-import type {FastifyReply, FastifyRequest} from "fastify";
-import {createUser} from "./user.service.js";
-import type {CreateUserInput} from "./user.schema.js";
+import {type FastifyReply} from "fastify";
+import {type FastifyRequest} from "fastify";
+import {createUser, findByEmail} from "./user.service.js";
+import type {CreateUserInput, LoginInput} from "./user.schema.js";
+import {hashPassword, verifyPassword} from "../../utils/hash.js";
+import {server} from "../../server.js";
 
 async function registerUserHandler(request: FastifyRequest<{
     Body: CreateUserInput
@@ -20,4 +23,52 @@ async function registerUserHandler(request: FastifyRequest<{
     }
 }
 
-export default registerUserHandler;
+async function loginHandler(request: FastifyRequest<{
+    Body: LoginInput
+}>, reply: FastifyReply) {
+    const body = request.body;
+
+    //find user by email, if not found, return 401
+    const user = await findByEmail(body.email);
+    console.log(user)
+    if (!user) {
+        return reply.code(401).send({error: 'Invalid email or password'});
+    }
+
+    //verify pwd and generate access token
+    const correctPassword = verifyPassword({
+        candidatePwd: body.password,
+        salt: user.password_salt,
+        hash: user.password_hash
+    });
+
+    console.log(body.password)
+    console.log(user.password_hash)
+    console.log(correctPassword)
+
+    if (correctPassword) {
+        const {password_hash, password_salt, ...rest} = user;
+
+        console.log(rest)
+        const accessToken = server.jwt.sign(
+            {
+                sub: user.id,
+                email: user.email,
+            },
+            {
+                expiresIn: '15m',
+            }
+        )
+        console.log(accessToken)
+        return {
+            accessToken
+        }
+    }
+
+    return reply.code(401).send({error: 'Unauthorized'});
+}
+
+export {
+    registerUserHandler,
+    loginHandler,
+};

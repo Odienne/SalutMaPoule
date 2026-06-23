@@ -21,5 +21,6 @@ export async function create(data: {
         first_name: data.firstName,
         last_name: data.lastName,
         password_hash: data.password,
+        password_salt: data.salt,
     }).run(pool);
 }

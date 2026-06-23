@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import {z} from 'zod';
 
 const userCore = z.object({
     email: z.email({
@@ -16,4 +16,17 @@ export const createUserResponseSchema = userCore.extend({
     id: z.number(),
 });
 
+/** auth related **/
+export const loginSchema = z.object({
+    email: z.email({
+        error: 'Email must be a valid email address',
+    }),
+    password: z.string().min(8, 'Password must be at least 8 characters long'),
+});
+
+export const loginResponseSchema = z.object({
+    accessToken: z.string()
+});
+
 export type CreateUserInput = z.infer<typeof createUserSchema>;
+export type LoginInput = z.infer<typeof loginSchema>;

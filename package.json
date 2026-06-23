@@ -8,6 +8,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "db:migrate": "dotenv -e .env.dev -- dbmate up",
+    "db:down": "dotenv -e .env.dev -- dbmate down",
     "db:rollback": "dotenv -e .env.dev -- dbmate rollback",
     "db:generate": "dotenv -e .env.dev -- zapatos"
   },
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/fastify-jwt": "^0.4.3",
     "@types/pg": "^8.20.0",
     "dbmate": "^2.33.0",
     "dotenv-cli": "^11.0.0",
