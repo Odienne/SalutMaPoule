@@ -1,9 +1,7 @@
 import {type FastifyReply} from "fastify";
 import {type FastifyRequest} from "fastify";
-import {createUser, findByEmail, findUsers} from "./user.service.js";
+import {createUser, findUsers, loginUser} from "./user.service.js";
 import type {CreateUserInput, LoginInput} from "./user.schema.js";
-import {hashPassword, verifyPassword} from "../../utils/hash.js";
-import {server} from "../../server.js";
 
 export async function registerUserHandler(request: FastifyRequest<{
     Body: CreateUserInput
@@ -18,47 +16,28 @@ export async function registerUserHandler(request: FastifyRequest<{
             lastName: user.last_name,
         });
     } catch (error) {
-        console.log(error)
-        return reply.code(500).send(error);
+        return reply.code(400).send({
+            error: 'User creation failed',
+        });
     }
 }
 
-export async function loginHandler(request: FastifyRequest<{
-    Body: LoginInput
-}>, reply: FastifyReply) {
-    const body = request.body;
+export async function loginHandler(
+    request: FastifyRequest<{ Body: LoginInput }>,
+    reply: FastifyReply
+) {
+    try {
+        const user = await loginUser(request.body);
 
-    //find user by email, if not found, return 401
-    const user = await findByEmail(body.email);
-    if (!user) {
-        return reply.code(401).send({error: 'Invalid email or password'});
+        const accessToken = request.server.jwt.sign({
+            sub: user.id,
+            email: user.email,
+        });
+
+        return reply.send({ accessToken });
+    } catch(error) {
+        return reply.code(401).send({ error: 'Invalid credentials' });
     }
-
-    //verify pwd and generate access token
-    const correctPassword = verifyPassword({
-        candidatePwd: body.password,
-        salt: user.password_salt,
-        hash: user.password_hash
-    });
-
-    if (correctPassword) {
-        const {password_hash, password_salt, ...rest} = user;
-
-        const accessToken = server.jwt.sign(
-            {
-                sub: user.id,
-                email: user.email,
-            },
-            {
-                expiresIn: '15m',
-            }
-        )
-        return {
-            accessToken
-        }
-    }
-
-    return reply.code(401).send({error: 'Unauthorized'});
 }
 
 export async function findUsersHandler(request: FastifyRequest, reply: FastifyReply) {

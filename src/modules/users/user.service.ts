@@ -1,5 +1,5 @@
-import type {CreateUserInput} from "./user.schema.js";
-import {hashPassword} from "../../utils/hash.js";
+import type {CreateUserInput, LoginInput} from "./user.schema.js";
+import {hashPassword, verifyPassword} from "../../utils/hash.js";
 import * as userRepository from "./user.repository.js";
 
 export async function createUser(input: CreateUserInput) {
@@ -16,11 +16,26 @@ export async function createUser(input: CreateUserInput) {
     );
 }
 
-export async function findByEmail(email: string) {
-    return userRepository.findByEmail(email);
-}
-
 export async function findUsers() {
     return userRepository.getUsers();
 }
 
+export async function loginUser(input: LoginInput) {
+    const user = await userRepository.findByEmail(input.email);
+
+    if (!user) {
+        throw new Error('Invalid credentials');
+    }
+
+    const ok = verifyPassword({
+        candidatePwd: input.password,
+        salt: user.password_salt,
+        hash: user.password_hash,
+    });
+
+    if (!ok) {
+        throw new Error('Invalid credentials');
+    }
+
+    return user;
+}
