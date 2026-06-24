@@ -1,0 +1,2 @@
+CREATE DATABASE salut_dev;
+CREATE DATABASE salut_test;
