@@ -8,7 +8,7 @@ import {
 
 import Fastify, {type FastifyReply, type FastifyRequest} from "fastify";
 import userRoutes from "./modules/users/user.route.js";
-import jwt from "fastify-jwt";
+import jwt from "@fastify/jwt";
 
 export const server = Fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -24,7 +24,7 @@ server.register(jwt, {
 
 server.decorate("authenticate", async (request: FastifyRequest, reply: FastifyReply) => {
         try {
-            await request.jwtVerify(request.headers.authorization);
+            await request.jwtVerify();
         } catch (error) {
             reply.status(401).send({error: 'Unauthorized'});
         }

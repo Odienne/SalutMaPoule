@@ -30,7 +30,6 @@ export async function loginHandler(request: FastifyRequest<{
 
     //find user by email, if not found, return 401
     const user = await findByEmail(body.email);
-    console.log(user)
     if (!user) {
         return reply.code(401).send({error: 'Invalid email or password'});
     }
@@ -42,14 +41,9 @@ export async function loginHandler(request: FastifyRequest<{
         hash: user.password_hash
     });
 
-    console.log(body.password)
-    console.log(user.password_hash)
-    console.log(correctPassword)
-
     if (correctPassword) {
         const {password_hash, password_salt, ...rest} = user;
 
-        console.log(rest)
         const accessToken = server.jwt.sign(
             {
                 sub: user.id,
@@ -59,7 +53,6 @@ export async function loginHandler(request: FastifyRequest<{
                 expiresIn: '15m',
             }
         )
-        console.log(accessToken)
         return {
             accessToken
         }
