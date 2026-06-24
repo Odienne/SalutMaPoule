@@ -2,11 +2,13 @@ import * as db from 'zapatos/db';
 import {pool} from '../../../db/pool.js';
 
 export async function findByEmail(email: string) {
-    return db.selectOne('users', { email }).run(pool);
+    return db.selectOne('users', {email}).run(pool);
 }
 
 export async function getUsers() {
-    return db.select('users', {}).run(pool);
+    return db.select('users', {}, {
+        columns: ['id', 'email', 'first_name', 'last_name']
+    }).run(pool);
 }
 
 export async function create(data: {

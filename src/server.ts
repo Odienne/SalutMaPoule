@@ -12,6 +12,12 @@ import jwt from "fastify-jwt";
 
 export const server = Fastify().withTypeProvider<ZodTypeProvider>();
 
+declare module 'fastify' {
+    export interface FastifyInstance {
+        authenticate: any;
+    }
+}
+
 server.register(jwt, {
     secret: "enfinencdi"
 })

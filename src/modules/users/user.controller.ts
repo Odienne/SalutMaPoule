@@ -1,11 +1,11 @@
 import {type FastifyReply} from "fastify";
 import {type FastifyRequest} from "fastify";
-import {createUser, findByEmail} from "./user.service.js";
+import {createUser, findByEmail, findUsers} from "./user.service.js";
 import type {CreateUserInput, LoginInput} from "./user.schema.js";
 import {hashPassword, verifyPassword} from "../../utils/hash.js";
 import {server} from "../../server.js";
 
-async function registerUserHandler(request: FastifyRequest<{
+export async function registerUserHandler(request: FastifyRequest<{
     Body: CreateUserInput
 }>, reply: FastifyReply) {
     const body = request.body;
@@ -23,7 +23,7 @@ async function registerUserHandler(request: FastifyRequest<{
     }
 }
 
-async function loginHandler(request: FastifyRequest<{
+export async function loginHandler(request: FastifyRequest<{
     Body: LoginInput
 }>, reply: FastifyReply) {
     const body = request.body;
@@ -68,7 +68,8 @@ async function loginHandler(request: FastifyRequest<{
     return reply.code(401).send({error: 'Unauthorized'});
 }
 
-export {
-    registerUserHandler,
-    loginHandler,
-};
+export async function findUsersHandler(request: FastifyRequest, reply: FastifyReply) {
+    const users = await findUsers();
+
+    return reply.code(200).send({users});
+}

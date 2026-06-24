@@ -19,3 +19,8 @@ export async function createUser(input: CreateUserInput) {
 export async function findByEmail(email: string) {
     return userRepository.findByEmail(email);
 }
+
+export async function findUsers() {
+    return userRepository.getUsers();
+}
+
