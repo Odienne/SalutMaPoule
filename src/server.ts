@@ -19,7 +19,7 @@ declare module 'fastify' {
 }
 
 server.register(jwt, {
-    secret: "enfinencdi"
+    secret: process.env.JWT_SECRET!
 })
 
 server.decorate("authenticate", async (request: FastifyRequest, reply: FastifyReply) => {
