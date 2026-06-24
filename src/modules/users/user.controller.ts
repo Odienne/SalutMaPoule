@@ -15,7 +15,7 @@ export async function registerUserHandler(request: FastifyRequest<{
             firstName: user.first_name,
             lastName: user.last_name,
         });
-    } catch (error) {
+    } catch {
         return reply.code(400).send({
             error: 'User creation failed',
         });
@@ -35,7 +35,7 @@ export async function loginHandler(
         });
 
         return reply.send({ accessToken });
-    } catch(error) {
+    } catch {
         return reply.code(401).send({ error: 'Invalid credentials' });
     }
 }

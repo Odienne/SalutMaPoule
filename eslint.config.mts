@@ -11,6 +11,13 @@ export default defineConfig([
         extends: ["js/recommended"],
         languageOptions: {globals: globals.browser}
     },
+    {
+        ignores: [
+            'node_modules',
+            'dist',
+            'src/zapatos/**',
+        ],
+    },
     tseslint.configs.recommended,
     eslintConfigPrettier
 ]);

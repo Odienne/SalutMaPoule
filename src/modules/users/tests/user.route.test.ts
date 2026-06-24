@@ -1,4 +1,4 @@
-import {describe, it, expect, beforeEach, vi} from 'vitest';
+import {describe, it, expect, vi} from 'vitest';
 import {buildServer} from '../../../app.js';
 
 vi.mock('../../../auth/authenticate.js', () => ({
