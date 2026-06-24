@@ -7,10 +7,19 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
-    "db:migrate": "dotenv -e .env.dev -- dbmate up",
+    "db:up": "dotenv -e .env.dev -- dbmate up",
+    "db:up:prod": "dotenv -e .env -- dbmate up",
+    "db:up:test": "dotenv -e .env.test -- dbmate up",
     "db:down": "dotenv -e .env.dev -- dbmate down",
+    "db:down:prod": "dotenv -e .env -- dbmate down",
+    "db:down:test": "dotenv -e .env.test -- dbmate down",
     "db:rollback": "dotenv -e .env.dev -- dbmate rollback",
-    "db:generate": "dotenv -e .env.dev -- zapatos"
+    "db:rollback:prod": "dotenv -e .env -- dbmate rollback",
+    "db:rollback:test": "dotenv -e .env.test -- dbmate rollback",
+    "db:generate": "dotenv -e .env.dev -- zapatos",
+    "db:generate:prod": "dotenv -e .env -- zapatos",
+    "db:generate:test": "dotenv -e .env.test -- zapatos",
+    "test": "vitest"
   },
   "dependencies": {
     "@fastify/jwt": "^10.1.0",
@@ -37,6 +46,7 @@
     "jiti": "^2.7.0",
     "prettier": "^3.8.4",
     "tsx": "^4.22.4",
-    "typescript-eslint": "^8.61.1"
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^4.1.9"
   }
 }
