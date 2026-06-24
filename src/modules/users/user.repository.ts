@@ -5,6 +5,10 @@ export async function findByEmail(email: string) {
     return db.selectOne('users', {email}).run(pool);
 }
 
+export async function getById(id: number) {
+    return db.selectOne('users', {id}).run(pool);
+}
+
 export async function getUsers() {
     return db.select('users', {}, {
         columns: ['id', 'email', 'first_name', 'last_name']

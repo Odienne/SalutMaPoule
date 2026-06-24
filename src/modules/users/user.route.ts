@@ -1,5 +1,5 @@
 import type {FastifyInstance} from "fastify";
-import {registerUserHandler, loginHandler, findUsersHandler} from "./user.controller.js";
+import {registerUserHandler, loginHandler, findUsersHandler, findUserHandler} from "./user.controller.js";
 import {createUserResponseSchema, createUserSchema, loginSchema, loginResponseSchema} from "./user.schema.js";
 
 async function userRoutes(server: FastifyInstance) {
@@ -28,6 +28,10 @@ async function userRoutes(server: FastifyInstance) {
     server.get('/', {
         preHandler: [server.authenticate],
     }, findUsersHandler)
+
+    server.get('/:id', {
+        preHandler: [server.authenticate],
+    }, findUserHandler)
 }
 
 export default userRoutes;

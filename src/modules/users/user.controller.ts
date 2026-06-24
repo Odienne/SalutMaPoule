@@ -1,6 +1,6 @@
 import {type FastifyReply} from "fastify";
 import {type FastifyRequest} from "fastify";
-import {createUser, findUsers, loginUser} from "./user.service.js";
+import {createUser, findUserById, findUsers, loginUser} from "./user.service.js";
 import type {CreateUserInput, LoginInput} from "./user.schema.js";
 
 export async function registerUserHandler(request: FastifyRequest<{
@@ -44,4 +44,15 @@ export async function findUsersHandler(request: FastifyRequest, reply: FastifyRe
     const users = await findUsers();
 
     return reply.code(200).send({users});
+}
+
+export async function findUserHandler(request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
+    const {id} = request.params;
+    const user = await findUserById(Number(id));
+
+    if (!user) {
+        return reply.code(404).send({ error: 'User not found' });
+    }
+
+    return reply.code(200).send({user});
 }

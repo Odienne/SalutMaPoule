@@ -19,6 +19,9 @@ export async function createUser(input: CreateUserInput) {
 export async function findUsers() {
     return userRepository.getUsers();
 }
+export async function findUserById(id: number) {
+    return userRepository.getById(id);
+}
 
 export async function loginUser(input: LoginInput) {
     const user = await userRepository.findByEmail(input.email);
