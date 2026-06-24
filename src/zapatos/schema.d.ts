@@ -23,6 +23,539 @@ declare module 'zapatos/schema' {
   /* --- tables --- */
 
   /**
+   * **listings**
+   * - Table in database
+   */
+  export namespace listings {
+    export type Table = 'listings';
+    export interface Selectable {
+      /**
+      * **listings.age_months**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      age_months: number | null;
+      /**
+      * **listings.breed**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      breed: string | null;
+      /**
+      * **listings.city**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      city: string | null;
+      /**
+      * **listings.created_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      created_at: Date;
+      /**
+      * **listings.description**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      description: string;
+      /**
+      * **listings.free_range**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      free_range: boolean;
+      /**
+      * **listings.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('listings_id_seq'::regclass)`
+      */
+      id: number;
+      /**
+      * **listings.is_laying**
+      * - `bool` in database
+      * - `NOT NULL`, default: `true`
+      */
+      is_laying: boolean;
+      /**
+      * **listings.latitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      latitude: db.NumericString | null;
+      /**
+      * **listings.longitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      longitude: db.NumericString | null;
+      /**
+      * **listings.organic_feed**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      organic_feed: boolean;
+      /**
+      * **listings.owner_id**
+      * - `int4` in database
+      * - `NOT NULL`, no default
+      */
+      owner_id: number;
+      /**
+      * **listings.price**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      price: db.NumericString | null;
+      /**
+      * **listings.quantity**
+      * - `int4` in database
+      * - `NOT NULL`, default: `1`
+      */
+      quantity: number;
+      /**
+      * **listings.status**
+      * - `varchar` in database
+      * - `NOT NULL`, default: `'published'::character varying`
+      */
+      status: string;
+      /**
+      * **listings.title**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      title: string;
+      /**
+      * **listings.updated_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at: Date;
+    }
+    export interface JSONSelectable {
+      /**
+      * **listings.age_months**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      age_months: number | null;
+      /**
+      * **listings.breed**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      breed: string | null;
+      /**
+      * **listings.city**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      city: string | null;
+      /**
+      * **listings.created_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      created_at: db.TimestampString;
+      /**
+      * **listings.description**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      description: string;
+      /**
+      * **listings.free_range**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      free_range: boolean;
+      /**
+      * **listings.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('listings_id_seq'::regclass)`
+      */
+      id: number;
+      /**
+      * **listings.is_laying**
+      * - `bool` in database
+      * - `NOT NULL`, default: `true`
+      */
+      is_laying: boolean;
+      /**
+      * **listings.latitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      latitude: number | null;
+      /**
+      * **listings.longitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      longitude: number | null;
+      /**
+      * **listings.organic_feed**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      organic_feed: boolean;
+      /**
+      * **listings.owner_id**
+      * - `int4` in database
+      * - `NOT NULL`, no default
+      */
+      owner_id: number;
+      /**
+      * **listings.price**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      price: number | null;
+      /**
+      * **listings.quantity**
+      * - `int4` in database
+      * - `NOT NULL`, default: `1`
+      */
+      quantity: number;
+      /**
+      * **listings.status**
+      * - `varchar` in database
+      * - `NOT NULL`, default: `'published'::character varying`
+      */
+      status: string;
+      /**
+      * **listings.title**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      title: string;
+      /**
+      * **listings.updated_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at: db.TimestampString;
+    }
+    export interface Whereable {
+      /**
+      * **listings.age_months**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      age_months?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.breed**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      breed?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.city**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      city?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.created_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.description**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      description?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.free_range**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      free_range?: boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('listings_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.is_laying**
+      * - `bool` in database
+      * - `NOT NULL`, default: `true`
+      */
+      is_laying?: boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.latitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      latitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.longitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      longitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.organic_feed**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      organic_feed?: boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.owner_id**
+      * - `int4` in database
+      * - `NOT NULL`, no default
+      */
+      owner_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.price**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      price?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.quantity**
+      * - `int4` in database
+      * - `NOT NULL`, default: `1`
+      */
+      quantity?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.status**
+      * - `varchar` in database
+      * - `NOT NULL`, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.title**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      title?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **listings.updated_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
+    }
+    export interface Insertable {
+      /**
+      * **listings.age_months**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      age_months?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.breed**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      breed?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.city**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      city?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.created_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.description**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      description: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **listings.free_range**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      free_range?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('listings_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.is_laying**
+      * - `bool` in database
+      * - `NOT NULL`, default: `true`
+      */
+      is_laying?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.latitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      latitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.longitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      longitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.organic_feed**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      organic_feed?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.owner_id**
+      * - `int4` in database
+      * - `NOT NULL`, no default
+      */
+      owner_id: number | db.Parameter<number> | db.SQLFragment;
+      /**
+      * **listings.price**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      price?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.quantity**
+      * - `int4` in database
+      * - `NOT NULL`, default: `1`
+      */
+      quantity?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.status**
+      * - `varchar` in database
+      * - `NOT NULL`, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
+      /**
+      * **listings.title**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      title: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **listings.updated_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment;
+    }
+    export interface Updatable {
+      /**
+      * **listings.age_months**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      age_months?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.breed**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      breed?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.city**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      city?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.created_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.description**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      description?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **listings.free_range**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      free_range?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('listings_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.is_laying**
+      * - `bool` in database
+      * - `NOT NULL`, default: `true`
+      */
+      is_laying?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.latitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      latitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.longitude**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      longitude?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.organic_feed**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      organic_feed?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.owner_id**
+      * - `int4` in database
+      * - `NOT NULL`, no default
+      */
+      owner_id?: number | db.Parameter<number> | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment>;
+      /**
+      * **listings.price**
+      * - `numeric` in database
+      * - Nullable, no default
+      */
+      price?: (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (number | db.NumericString) | db.Parameter<(number | db.NumericString)> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.quantity**
+      * - `int4` in database
+      * - `NOT NULL`, default: `1`
+      */
+      quantity?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.status**
+      * - `varchar` in database
+      * - `NOT NULL`, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **listings.title**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      title?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **listings.updated_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.DefaultType | db.SQLFragment>;
+    }
+    export type UniqueIndex = 'listings_pkey';
+    export type Column = keyof Selectable;
+    export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
+    export type SQLExpression = Table | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Whereable | Column | db.ParentColumn | db.GenericSQLExpression;
+    export type SQL = SQLExpression | SQLExpression[];
+  }
+
+  /**
    * **schema_migrations**
    * - Table in database
    */
@@ -461,20 +994,20 @@ declare module 'zapatos/schema' {
   /* --- aggregate types --- */
 
   export namespace public {  
-    export type Table = schema_migrations.Table | users.Table;
-    export type Selectable = schema_migrations.Selectable | users.Selectable;
-    export type JSONSelectable = schema_migrations.JSONSelectable | users.JSONSelectable;
-    export type Whereable = schema_migrations.Whereable | users.Whereable;
-    export type Insertable = schema_migrations.Insertable | users.Insertable;
-    export type Updatable = schema_migrations.Updatable | users.Updatable;
-    export type UniqueIndex = schema_migrations.UniqueIndex | users.UniqueIndex;
-    export type Column = schema_migrations.Column | users.Column;
+    export type Table = listings.Table | schema_migrations.Table | users.Table;
+    export type Selectable = listings.Selectable | schema_migrations.Selectable | users.Selectable;
+    export type JSONSelectable = listings.JSONSelectable | schema_migrations.JSONSelectable | users.JSONSelectable;
+    export type Whereable = listings.Whereable | schema_migrations.Whereable | users.Whereable;
+    export type Insertable = listings.Insertable | schema_migrations.Insertable | users.Insertable;
+    export type Updatable = listings.Updatable | schema_migrations.Updatable | users.Updatable;
+    export type UniqueIndex = listings.UniqueIndex | schema_migrations.UniqueIndex | users.UniqueIndex;
+    export type Column = listings.Column | schema_migrations.Column | users.Column;
   
-    export type AllBaseTables = [schema_migrations.Table, users.Table];
+    export type AllBaseTables = [listings.Table, schema_migrations.Table, users.Table];
     export type AllForeignTables = [];
     export type AllViews = [];
     export type AllMaterializedViews = [];
-    export type AllTablesAndViews = [schema_migrations.Table, users.Table];
+    export type AllTablesAndViews = [listings.Table, schema_migrations.Table, users.Table];
   }
 
 
@@ -502,41 +1035,49 @@ declare module 'zapatos/schema' {
   /* === lookups === */
 
   export type SelectableForTable<T extends Table> = {
+    "listings": listings.Selectable;
     "schema_migrations": schema_migrations.Selectable;
     "users": users.Selectable;
   }[T];
 
   export type JSONSelectableForTable<T extends Table> = {
+    "listings": listings.JSONSelectable;
     "schema_migrations": schema_migrations.JSONSelectable;
     "users": users.JSONSelectable;
   }[T];
 
   export type WhereableForTable<T extends Table> = {
+    "listings": listings.Whereable;
     "schema_migrations": schema_migrations.Whereable;
     "users": users.Whereable;
   }[T];
 
   export type InsertableForTable<T extends Table> = {
+    "listings": listings.Insertable;
     "schema_migrations": schema_migrations.Insertable;
     "users": users.Insertable;
   }[T];
 
   export type UpdatableForTable<T extends Table> = {
+    "listings": listings.Updatable;
     "schema_migrations": schema_migrations.Updatable;
     "users": users.Updatable;
   }[T];
 
   export type UniqueIndexForTable<T extends Table> = {
+    "listings": listings.UniqueIndex;
     "schema_migrations": schema_migrations.UniqueIndex;
     "users": users.UniqueIndex;
   }[T];
 
   export type ColumnForTable<T extends Table> = {
+    "listings": listings.Column;
     "schema_migrations": schema_migrations.Column;
     "users": users.Column;
   }[T];
 
   export type SQLForTable<T extends Table> = {
+    "listings": listings.SQL;
     "schema_migrations": schema_migrations.SQL;
     "users": users.SQL;
   }[T];
