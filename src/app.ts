@@ -6,6 +6,7 @@ import {
 import Fastify, {type FastifyReply, type FastifyRequest} from "fastify";
 import userRoutes from "./modules/users/user.route.js";
 import jwt from "@fastify/jwt";
+import listingRoutes from "./modules/listings/listing.route.js";
 
 
 
@@ -42,6 +43,10 @@ export async function buildServer() {
 
     server.register(userRoutes, {
         prefix: '/api/users',
+    });
+
+    server.register(listingRoutes, {
+        prefix: '/api/listings',
     });
 
     return server;
