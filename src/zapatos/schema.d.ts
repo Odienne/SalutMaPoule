@@ -83,6 +83,12 @@ declare module 'zapatos/schema' {
     export type Table = 'users';
     export interface Selectable {
       /**
+      * **users.avatar_url**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      avatar_url: string | null;
+      /**
       * **users.created_at**
       * - `timestamp` in database
       * - `NOT NULL`, default: `now()`
@@ -107,6 +113,12 @@ declare module 'zapatos/schema' {
       */
       id: number;
       /**
+      * **users.is_verified**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      is_verified: boolean;
+      /**
       * **users.last_name**
       * - `varchar` in database
       * - Nullable, no default
@@ -124,8 +136,32 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_salt: string;
+      /**
+      * **users.phone**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      phone: string | null;
+      /**
+      * **users.seller_description**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      seller_description: string | null;
+      /**
+      * **users.updated_at**
+      * - `timestamptz` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at: Date;
     }
     export interface JSONSelectable {
+      /**
+      * **users.avatar_url**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      avatar_url: string | null;
       /**
       * **users.created_at**
       * - `timestamp` in database
@@ -151,6 +187,12 @@ declare module 'zapatos/schema' {
       */
       id: number;
       /**
+      * **users.is_verified**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      is_verified: boolean;
+      /**
       * **users.last_name**
       * - `varchar` in database
       * - Nullable, no default
@@ -168,8 +210,32 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_salt: string;
+      /**
+      * **users.phone**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      phone: string | null;
+      /**
+      * **users.seller_description**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      seller_description: string | null;
+      /**
+      * **users.updated_at**
+      * - `timestamptz` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at: db.TimestampTzString;
     }
     export interface Whereable {
+      /**
+      * **users.avatar_url**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      avatar_url?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
       * **users.created_at**
       * - `timestamp` in database
@@ -195,6 +261,12 @@ declare module 'zapatos/schema' {
       */
       id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
+      * **users.is_verified**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      is_verified?: boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn>;
+      /**
       * **users.last_name**
       * - `varchar` in database
       * - Nullable, no default
@@ -212,8 +284,32 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_salt?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.phone**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      phone?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.seller_description**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      seller_description?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.updated_at**
+      * - `timestamptz` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
+      /**
+      * **users.avatar_url**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      avatar_url?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
       /**
       * **users.created_at**
       * - `timestamp` in database
@@ -239,6 +335,12 @@ declare module 'zapatos/schema' {
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
+      * **users.is_verified**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      is_verified?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment;
+      /**
       * **users.last_name**
       * - `varchar` in database
       * - Nullable, no default
@@ -256,8 +358,32 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_salt?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.phone**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      phone?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.seller_description**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      seller_description?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.updated_at**
+      * - `timestamptz` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment;
     }
     export interface Updatable {
+      /**
+      * **users.avatar_url**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      avatar_url?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **users.created_at**
       * - `timestamp` in database
@@ -283,6 +409,12 @@ declare module 'zapatos/schema' {
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
       /**
+      * **users.is_verified**
+      * - `bool` in database
+      * - `NOT NULL`, default: `false`
+      */
+      is_verified?: boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.DefaultType | db.SQLFragment>;
+      /**
       * **users.last_name**
       * - `varchar` in database
       * - Nullable, no default
@@ -300,6 +432,24 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `''::text`
       */
       password_salt?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.phone**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      phone?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.seller_description**
+      * - `text` in database
+      * - Nullable, no default
+      */
+      seller_description?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.updated_at**
+      * - `timestamptz` in database
+      * - `NOT NULL`, default: `now()`
+      */
+      updated_at?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment>;
     }
     export type UniqueIndex = 'users_email_key' | 'users_pkey';
     export type Column = keyof Selectable;
