@@ -26,7 +26,9 @@ export async function buildServer() {
         ) => {
             try {
                 await request.jwtVerify();
-            } catch {
+                console.log(request.user)
+            } catch (error: any){
+                console.log(error)
                 return reply.status(401).send({
                     error: 'Unauthorized',
                 });
